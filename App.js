@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Header from './components/header';
 import TodoItem from './components/TodoItem';
 import AddTodo from './components/AddTodo';
@@ -39,13 +38,12 @@ export default function App() {
   return (
     <TouchableWithoutFeedback onPress={() => {
       Keyboard.dismiss();
-      console.log('ajkdf')
     }}>
-      <View style={styles.container}>
+      <View style={tw.style('flex-1 bg-white')}>
         <Header />
-        <View style={styles.content}>
+        <View style={tw.style('p-8 flex-1')}>
           <AddTodo submitHandler={submitHandler}/>
-          <View style={styles.list}>
+          <View style={tw.style('mt-5')}>
             <FlatList
               data={todos}
               renderItem={({ item }) => (
@@ -58,16 +56,3 @@ export default function App() {
     </TouchableWithoutFeedback>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  content: {
-    padding: 40,
-  },
-  list: {
-    marginTop: 20,
-  },
-});
